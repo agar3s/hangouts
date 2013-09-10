@@ -58,8 +58,6 @@
 var chatLog = '';
 var drawMessage = function(messageRecieved){
   alert('msg received');
-  console.log(messageReceived.senderId);
-  console.log(messageReceived.message);
   chatLog+='<span>'+messageReceived.message+'</span><br>'
   var retVal = '<p>chat duplicated: </p><ul>';
   retVal+=chatLog;
@@ -71,7 +69,6 @@ var drawMessage = function(messageRecieved){
 
 function showParticipants() {
   alert('ahhgh');
-  console.log('uhhh');
 }
 
 function init() {
@@ -81,7 +78,7 @@ function init() {
         if (eventObj.isApiReady) {
           document.getElementById('showParticipants')
             .style.visibility = 'visible';
-            alert('its ready');
+          alert('draw message '+ drawMessage);
           gapi.hangout.data.onMessageReceived.add(drawMessage);
           alert('no problem');
         }
