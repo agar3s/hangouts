@@ -70,7 +70,8 @@ var drawMessage = function(messageRecieved){
 };
 
 function showParticipants() {
-  var participants = gapi.hangout.getParticipants();
+  alert('ahhgh');
+  console.log('uhhh');
 }
 
 function init() {
