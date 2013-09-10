@@ -55,21 +55,18 @@
 <p><a href="http://developers.google.com/+/hangouts/getting-started">Read the docs</a> to learn more about developing hangouts!</a></p>
 
 <script>
+var chatLog = '';
 function showParticipants() {
   var participants = gapi.hangout.getParticipants();
 
-  var retVal = '<p>Participants: </p><ul>';
+  gapi.hangout.data.onMessageReceived.add(function(messageRecieved){
+    console.log(messageReceived.senderId);
+    console.log(messageReceived.message);
+    chatLog+='<span>'+messageReceived.message+'</span><br>'
+  });
 
-  for (var index in participants) {
-    var participant = participants[index];
-
-    if (!participant.person) {
-      retVal += '<li>A participant not running this app</li>';
-    }
-    retVal += '<li>' + participant.person.displayName + '</li>';
-  }
-
-  retVal += '</ul>';
+  var retVal = '<p>chat duplicated: </p><ul>';
+  retVal+=chatLog;
 
   var div = document.getElementById('participantsDiv');
 
